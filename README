@@ -1,0 +1,8 @@
+1.技术架构：
+    springBoot
+    mysql
+    mybatis + 通用Mapper + 通用Service + 分页
+    redis
+    pulsar
+    elasticsearch
+

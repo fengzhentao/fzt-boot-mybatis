@@ -1,0 +1,15 @@
+spring:
+  datasource:
+    druid:
+      url: jdbc:mysql://localhost:3306/fzt-boot?useSSL=false&useUnicode=true&characterEncoding=UTF-8
+      username: root
+      password: root
+      driver-class-name: com.mysql.jdbc.Driver
+
+mybatis:
+  configuration:
+    map-underscore-to-camel-case: true
+
+logging:
+  level:
+    com.fzt.boot.dao: debug
