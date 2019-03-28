@@ -23,7 +23,7 @@ public class PersonController {
     private PersonService personService;
 
     @GetMapping("/person/page")
-    private PageInfo<Person> findPerson(@RequestParam int pageIndex,
+    public PageInfo<Person> findPerson(@RequestParam int pageIndex,
                                             @RequestParam int pageSize,
                                             @RequestParam String name) {
         Person person = new Person();
@@ -33,7 +33,7 @@ public class PersonController {
     }
 
     @GetMapping("/person/books/page")
-    private PageInfo<PersonVo> findPersonBooks(@RequestParam int pageIndex,
+    public PageInfo<PersonVo> findPersonBooks(@RequestParam int pageIndex,
                                             @RequestParam int pageSize,
                                             @RequestParam String name) {
         PersonQuery query = new PersonQuery();
