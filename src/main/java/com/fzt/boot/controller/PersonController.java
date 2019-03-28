@@ -1,8 +1,10 @@
 package com.fzt.boot.controller;
 
-import com.fzt.boot.base.PageBean;
 import com.fzt.boot.entity.Person;
+import com.fzt.boot.entity.query.PersonQuery;
+import com.fzt.boot.entity.vo.PersonVo;
 import com.fzt.boot.service.PersonService;
+import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -21,12 +23,24 @@ public class PersonController {
     private PersonService personService;
 
     @GetMapping("/person/page")
-    private PageBean<Person> findPersonPage(@RequestParam int pageIndex,
+    private PageInfo<Person> findPerson(@RequestParam int pageIndex,
                                             @RequestParam int pageSize,
                                             @RequestParam String name) {
         Person person = new Person();
-        person.setName(name);
-        PageBean<Person> personPage = personService.findPage(pageIndex,pageSize,person);
+        person.setName(name.isEmpty() ? null : name);
+        PageInfo<Person> personPage = personService.findPage(pageIndex,pageSize,person);
         return personPage;
+    }
+
+    @GetMapping("/person/books/page")
+    private PageInfo<PersonVo> findPersonBooks(@RequestParam int pageIndex,
+                                            @RequestParam int pageSize,
+                                            @RequestParam String name) {
+        PersonQuery query = new PersonQuery();
+        query.setPageIndex(pageIndex);
+        query.setPageSize(pageSize);
+        query.setName(name);
+        PageInfo<PersonVo> pageInfo = personService.findPersonBooks(query);
+        return pageInfo;
     }
 }

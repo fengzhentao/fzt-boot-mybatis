@@ -1,5 +1,7 @@
 package com.fzt.boot.base;
 
+import com.github.pagehelper.PageInfo;
+
 import java.util.List;
 
 /**
@@ -28,6 +30,6 @@ public interface BaseService<T,ID> {
 
     List<T> findAll();
 
-    PageBean<T> findPage(int pageIndex, int pageSize, T model);
+    PageInfo<T> findPage(int pageIndex, int pageSize, T model);
 
 }

@@ -2,6 +2,9 @@ package com.fzt.boot.service;
 
 import com.fzt.boot.base.BaseService;
 import com.fzt.boot.entity.Person;
+import com.fzt.boot.entity.query.PersonQuery;
+import com.fzt.boot.entity.vo.PersonVo;
+import com.github.pagehelper.PageInfo;
 
 /**
  * @Description 用户service
@@ -11,4 +14,5 @@ import com.fzt.boot.entity.Person;
  **/
 public interface PersonService extends BaseService<Person,Long> {
 
+    public PageInfo<PersonVo> findPersonBooks(PersonQuery query);
 }

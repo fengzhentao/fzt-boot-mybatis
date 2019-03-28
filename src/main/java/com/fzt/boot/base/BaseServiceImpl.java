@@ -1,6 +1,7 @@
 package com.fzt.boot.base;
 
 import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
@@ -62,12 +63,13 @@ public class BaseServiceImpl<T,ID> implements BaseService<T,ID> {
     }
 
     @Override
-    public PageBean<T> findPage(int pageIndex, int pageSize, T model) {
+    public PageInfo<T> findPage(int pageIndex, int pageSize, T model) {
           PageHelper.startPage(pageIndex,pageSize);
           List<T> modelList = mapper.select(model);
-          int count = mapper.selectCount(model);
-          PageBean<T> pageBean = new PageBean<>(pageIndex,pageSize,count);
-          pageBean.setItems(modelList);
+        PageInfo<T> pageBean = new PageInfo<>(modelList);
+//          int count = mapper.selectCount(model);
+//          PageBean<T> pageBean = new PageBean<>(pageIndex,pageSize,count);
+//          pageBean.setItems(modelList);
         return pageBean;
     }
 

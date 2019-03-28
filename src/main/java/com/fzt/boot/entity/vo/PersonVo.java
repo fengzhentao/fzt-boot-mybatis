@@ -4,6 +4,8 @@ import com.fzt.boot.entity.Book;
 import com.fzt.boot.entity.Person;
 import lombok.Data;
 
+import javax.persistence.Column;
+import java.util.Date;
 import java.util.List;
 
 /**

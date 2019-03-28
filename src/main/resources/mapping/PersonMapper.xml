@@ -32,7 +32,7 @@
     </where>
   </sql>
 
-  <select id="findPersonBookPage" resultMap="ResultMapPage">
+  <select id="findPersonBooks" resultMap="ResultMapPage">
     SELECT
 	p.*,
 	b.id b_id,
@@ -48,15 +48,6 @@
     <if test="param.orderBy != null">
       order by ${param.orderBy}
     </if>
-    limit #{param.pageIndex}, #{param.pageSize}
-  </select>
-
-  <select id="findCountPersonBookPage" resultType="int">
-    SELECT
-    count(*)
-    FROM
-    person p
-    <include refid="page_query"/>
   </select>
 
 </mapper>

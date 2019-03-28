@@ -67,22 +67,18 @@ public class PersonServiceImplTest {
 
     @Test
     public void findPage() {
-        PageBean<Person> pageBean = personService.findPage(1,2,new Person());
+        PageInfo<Person> pageBean = personService.findPage(1,2,new Person());
         System.out.println(pageBean.toString());
-        List<Person>  personList = pageBean.getItems();
+        List<Person>  personList = pageBean.getList();
         System.out.println(personList);
     }
 
     @Test
     public void findPersonBookPage() {
         PersonQuery query = new PersonQuery();
-        query.setPageIndex(1);
-        query.setPageSize(10);
-        query.setName("小王");
-        List<PersonVo> personVoList = personMapper.findPersonBookPage(query);
-        int count = personMapper.findCountPersonBookPage(query);
-        PageBean<PersonVo> pageBean = new PageBean<>(1,10,count);
-        pageBean.setItems(personVoList);
-        System.out.println(pageBean);
+        PageHelper.startPage(0, 4);
+        List<PersonVo> personVoList = personMapper.findPersonBooks(query);
+        PageInfo<PersonVo> pageInfo = new PageInfo<>(personVoList);
+        System.out.println(pageInfo.getList());
     }
 }

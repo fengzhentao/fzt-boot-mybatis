@@ -9,7 +9,16 @@ spring:
 mybatis:
   configuration:
     map-underscore-to-camel-case: true
+  mapper-locations: classpath:mapping/*.xml
+  type-aliases-package: com.fzt.boot.entity
+
+pagehelper:
+    helperDialect: mysql
+    reasonable: true
+    supportMethodsArguments: true
+    params: count=countSql
+    returnPageInfo: check
 
 logging:
   level:
-    com.fzt.boot.dao: debug
+    com.fzt.boot.mapper: debug
