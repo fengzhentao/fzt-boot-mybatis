@@ -3,6 +3,8 @@ package com.fzt.boot.entity;
 import lombok.Data;
 import lombok.ToString;
 
+import javax.persistence.Id;
+
 /**
  * 城市实体类
  * <p>
@@ -15,6 +17,7 @@ public class City {
     /**
      * 城市编号
      */
+    @Id
     private Long id;
 
     /**
