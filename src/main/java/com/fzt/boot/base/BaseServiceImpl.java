@@ -12,7 +12,7 @@ import java.util.List;
  * @Date 2018/12/26
  * @Version 1.0
  **/
-public class BaseServiceImpl<T,ID> implements BaseService<T,ID> {
+public class BaseServiceImpl<T, ID> implements BaseService<T, ID> {
 
     @Autowired
     private MyMapper<T> mapper;
@@ -64,8 +64,8 @@ public class BaseServiceImpl<T,ID> implements BaseService<T,ID> {
 
     @Override
     public PageInfo<T> findPage(int pageIndex, int pageSize, T model) {
-          PageHelper.startPage(pageIndex,pageSize);
-          List<T> modelList = mapper.select(model);
+        PageHelper.startPage(pageIndex, pageSize);
+        List<T> modelList = mapper.select(model);
         PageInfo<T> pageBean = new PageInfo<>(modelList);
 //          int count = mapper.selectCount(model);
 //          PageBean<T> pageBean = new PageBean<>(pageIndex,pageSize,count);

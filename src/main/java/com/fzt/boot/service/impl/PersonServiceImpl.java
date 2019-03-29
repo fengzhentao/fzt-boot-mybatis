@@ -4,7 +4,7 @@ import com.fzt.boot.base.BaseServiceImpl;
 import com.fzt.boot.entity.Person;
 import com.fzt.boot.entity.query.PersonQuery;
 import com.fzt.boot.entity.vo.PersonVo;
-import com.fzt.boot.mapper.PersonMapper;
+import com.fzt.boot.mapper.master.PersonMapper;
 import com.fzt.boot.service.PersonService;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
@@ -19,7 +19,7 @@ import org.springframework.stereotype.Service;
  * @Version 1.0
  **/
 @Service
-public class PersonServiceImpl extends BaseServiceImpl<Person,Long> implements PersonService {
+public class PersonServiceImpl extends BaseServiceImpl<Person, Long> implements PersonService {
 
     @Autowired
     PersonMapper personMapper;

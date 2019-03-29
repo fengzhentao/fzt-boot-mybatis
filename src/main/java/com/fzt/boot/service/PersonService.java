@@ -12,7 +12,7 @@ import com.github.pagehelper.PageInfo;
  * @Date 2018/12/26
  * @Version 1.0
  **/
-public interface PersonService extends BaseService<Person,Long> {
+public interface PersonService extends BaseService<Person, Long> {
 
-    public PageInfo<PersonVo> findPersonBooks(PersonQuery query);
+    PageInfo<PersonVo> findPersonBooks(PersonQuery query);
 }

@@ -3,5 +3,5 @@
     ehcache
     aop-log
     mysql
-    mybatis + 通用Mapper + 通用Service + 单表和多表分页
+    mybatis + 通用Mapper + 通用Service + 单表和多表分页 + 多数据源
     docker

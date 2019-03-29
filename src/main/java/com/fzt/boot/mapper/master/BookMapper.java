@@ -1,4 +1,4 @@
-package com.fzt.boot.mapper;
+package com.fzt.boot.mapper.master;
 
 import com.fzt.boot.base.MyMapper;
 import com.fzt.boot.entity.Book;

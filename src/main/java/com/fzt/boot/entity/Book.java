@@ -1,12 +1,13 @@
 package com.fzt.boot.entity;
 
+import lombok.Data;
+
+import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import java.math.BigDecimal;
 import java.util.Date;
-import javax.persistence.*;
-
-import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
 
 @Data
 @Table(name = "book")

@@ -1,4 +1,4 @@
-package com.fzt.boot.config;
+package com.fzt.boot.config.aop;
 
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.AfterReturning;
@@ -17,11 +17,9 @@ import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Method;
 import java.text.SimpleDateFormat;
-import java.util.Arrays;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -43,18 +41,18 @@ public class WebLogAspect {
     private ParameterNameDiscoverer parameterNameDiscoverer = new LocalVariableTableParameterNameDiscoverer();
 
     @Pointcut("execution(public * com.fzt.boot.controller.*.*(..))")
-    public void webLog(){}
+    public void webLog() {
+    }
 
 
     @Before("webLog()")
-    public void doBefore(JoinPoint joinPoint){
+    public void doBefore(JoinPoint joinPoint) {
 
         //接收到请求，记录请求内容
         logger.warn("【BEGIN TIME】 -> {}", sdf.format(new Date()));
         startTime.set(System.currentTimeMillis());
         ServletRequestAttributes attributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
         HttpServletRequest request = attributes.getRequest();
-        HttpSession session = request.getSession();
         Map<String, Object> params = buildContext(joinPoint);
         logger.warn("【URL】-> {}", request.getRequestURL().toString());
         logger.info("【HTTP_METHOD】-> {}", request.getMethod());
@@ -64,7 +62,7 @@ public class WebLogAspect {
     }
 
     @AfterReturning(returning = "ret", pointcut = "webLog()")
-    public void doAfterReturning(Object ret) throws Throwable {
+    public void doAfterReturning(Object ret) {
         //处理完请求，返回内容
         logger.info("【RESPONSE】-> {}", ret);
         logger.info("【USE TIME】-> {}", (System.currentTimeMillis() - startTime.get()));
@@ -72,7 +70,7 @@ public class WebLogAspect {
         startTime.remove();//用完之后记得清除，不然可能导致内存泄露;
     }
 
-    protected Map<String, Object> buildContext(JoinPoint jp){
+    protected Map<String, Object> buildContext(JoinPoint jp) {
         Map<String, Object> context = new HashMap<>();
         Object[] args = jp.getArgs();
         String[] paramNames = getParameterNames(jp);
@@ -89,6 +87,7 @@ public class WebLogAspect {
 
     /**
      * 获取参数名
+     *
      * @param jp
      * @return
      */
@@ -110,6 +109,7 @@ public class WebLogAspect {
 
     /**
      * 获取所有参数名字
+     *
      * @param method
      * @return
      */

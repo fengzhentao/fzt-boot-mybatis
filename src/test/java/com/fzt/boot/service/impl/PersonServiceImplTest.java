@@ -1,13 +1,11 @@
 package com.fzt.boot.service.impl;
-import java.util.Date;
-import java.util.List;
 
-import com.fzt.boot.base.PageBean;
+import com.fzt.boot.entity.City;
 import com.fzt.boot.entity.Person;
-import com.fzt.boot.entity.query.BasePageQuery;
 import com.fzt.boot.entity.query.PersonQuery;
 import com.fzt.boot.entity.vo.PersonVo;
-import com.fzt.boot.mapper.PersonMapper;
+import com.fzt.boot.mapper.cluster.CityMapper;
+import com.fzt.boot.mapper.master.PersonMapper;
 import com.fzt.boot.service.PersonService;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
@@ -17,7 +15,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import static org.junit.Assert.*;
+import java.util.Date;
+import java.util.List;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -27,12 +26,14 @@ public class PersonServiceImplTest {
     private PersonService personService;
     @Autowired
     private PersonMapper personMapper;
+    @Autowired
+    private CityMapper cityMapper;
 
     @Test
     public void save() {
         Person person = new Person();
         person.setName("小红");
-        person.setSex((byte)0);
+        person.setSex((byte) 0);
         person.setMoney(0L);
         person.setPrice(0.0D);
         person.setCount(0.0F);
@@ -67,14 +68,25 @@ public class PersonServiceImplTest {
 
     @Test
     public void findPage() {
-        PageInfo<Person> pageBean = personService.findPage(1,2,new Person());
+        PageInfo<Person> pageBean = personService.findPage(1, 2, new Person());
         System.out.println(pageBean.toString());
-        List<Person>  personList = pageBean.getList();
+        List<Person> personList = pageBean.getList();
         System.out.println(personList);
     }
 
     @Test
     public void findPersonBookPage() {
+        PersonQuery query = new PersonQuery();
+        PageHelper.startPage(0, 4);
+        List<PersonVo> personVoList = personMapper.findPersonBooks(query);
+        PageInfo<PersonVo> pageInfo = new PageInfo<>(personVoList);
+        System.out.println(pageInfo.getList());
+    }
+
+    @Test
+    public void findCity() {
+        City city = cityMapper.findByName("棚户区");
+        System.out.println(city);
         PersonQuery query = new PersonQuery();
         PageHelper.startPage(0, 4);
         List<PersonVo> personVoList = personMapper.findPersonBooks(query);

@@ -24,18 +24,18 @@ public class PersonController {
 
     @GetMapping("/person/page")
     public PageInfo<Person> findPerson(@RequestParam int pageIndex,
-                                            @RequestParam int pageSize,
-                                            @RequestParam String name) {
+                                       @RequestParam int pageSize,
+                                       @RequestParam String name) {
         Person person = new Person();
         person.setName(name.isEmpty() ? null : name);
-        PageInfo<Person> personPage = personService.findPage(pageIndex,pageSize,person);
+        PageInfo<Person> personPage = personService.findPage(pageIndex, pageSize, person);
         return personPage;
     }
 
     @GetMapping("/person/books/page")
     public PageInfo<PersonVo> findPersonBooks(@RequestParam int pageIndex,
-                                            @RequestParam int pageSize,
-                                            @RequestParam String name) {
+                                              @RequestParam int pageSize,
+                                              @RequestParam String name) {
         PersonQuery query = new PersonQuery();
         query.setPageIndex(pageIndex);
         query.setPageSize(pageSize);

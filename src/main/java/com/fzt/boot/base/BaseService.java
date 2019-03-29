@@ -10,7 +10,7 @@ import java.util.List;
  * @Date 2018/12/26
  * @Version 1.0
  **/
-public interface BaseService<T,ID> {
+public interface BaseService<T, ID> {
 
     int save(T model);
 
