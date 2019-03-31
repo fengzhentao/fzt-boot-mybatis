@@ -15,7 +15,11 @@ spring:
   aop:
     auto: true
     proxy-target-class: true
-
+  mail:
+    host: smtp.163.com  # smtp.qq.com
+    username: ****@163.com # ****@qq.com
+    password: **** # 是授权码不是登录密码
+    to : ****@qq.com # ****@163.com
 mybatis:
   configuration:
     map-underscore-to-camel-case: true
