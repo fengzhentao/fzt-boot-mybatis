@@ -1,9 +1,13 @@
 1.技术架构：
     springBoot
-    ehcache
-    aop-log
-    mail + test
-    scheduled
+        ehcache
+        aop-log
+        mail + test
+        scheduled
     mysql
-    mybatis + 通用Mapper + 通用Service + 单表和多表分页 + 多数据源
+        多数据源
+    mybatis
+        通用Mapper
+        通用Service
+        单表和多表分页
     docker
