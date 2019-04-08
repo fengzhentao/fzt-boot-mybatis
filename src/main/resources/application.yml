@@ -36,3 +36,11 @@ pagehelper:
 logging:
   level:
     com.fzt.boot.mapper: debug
+swagger:
+  enabled: true #是否开启swagger
+  title: fzt-boot
+  version: 1.9.0.RELEASE
+  base-package: com.fzt.boot.controller
+  base-path: /**
+#  更多配置参考文档：https://github.com/SpringForAll/spring-boot-starter-swagger
+

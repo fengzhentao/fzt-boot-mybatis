@@ -5,6 +5,7 @@ import com.fzt.boot.entity.query.PersonQuery;
 import com.fzt.boot.entity.vo.PersonVo;
 import com.fzt.boot.service.PersonService;
 import com.github.pagehelper.PageInfo;
+import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @Date 2018/12/26
  * @Version 1.0
  **/
+@Api(description = "用户")
 @RestController
 public class PersonController {
 
