@@ -1,6 +1,6 @@
 1.技术架构：
     springBoot
-        ehcache
+        ehcache + redis
         aop-log
         mail + test
         scheduled

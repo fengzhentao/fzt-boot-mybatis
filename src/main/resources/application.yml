@@ -20,6 +20,8 @@ spring:
     username: # ****@163.com # ****@qq.com
     password: # **** # 是授权码不是登录密码
     to : # ****@qq.com # ****@163.com
+  cache: #缓存类型
+    type: redis
   redis:
     host: localhost
     port: 6379
