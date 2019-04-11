@@ -11,6 +11,9 @@ import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Isolation;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * @Description 用户service实现
@@ -26,6 +29,8 @@ public class PersonServiceImpl extends BaseServiceImpl<Person, Long> implements 
 
     @Override
     @Cacheable(value = "personBookCaches", key = "'personBooks' + #p0")
+    @Transactional(transactionManager = "masterDataSourceTransactionManager",
+            isolation = Isolation.READ_COMMITTED, propagation = Propagation.REQUIRED, readOnly = true)
     public PageInfo<PersonVo> findPersonBooks(PersonQuery query) {
         PageHelper.startPage(query.getPageIndex(), query.getPageSize());
         return new PageInfo<>(personMapper.findPersonBooks(query));

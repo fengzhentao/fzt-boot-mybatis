@@ -5,6 +5,7 @@
         mail + test
         scheduled
         thymeLeaf
+        transactional 只读，隔离级别，传播行为的配置
     mysql
         多数据源
     mybatis
