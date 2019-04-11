@@ -4,6 +4,7 @@
         aop-log
         mail + test
         scheduled
+        thymeLeaf
     mysql
         多数据源
     mybatis
